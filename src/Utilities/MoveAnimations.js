@@ -13,26 +13,48 @@ export const generateId = () => uuidv4();
 
 export const getStyle = (blocksState, spritePosition, setSpritePosition) => {
   const newPosition = { ...spritePosition[spritePosition.length - 1] };
-  console.log(blocksState);
+  newPosition.transform = '';
   blocksState.forEach((item) => {
+    console.log("Item",item);
     switch (item.id) {
       case "MOVE_STEPS":
-        newPosition.transform = `translateX(${newPosition.transform ? newPosition.transform.split(" ")[0] + item.steps : item.steps}px)`;
+        if (newPosition.transform && newPosition.transform.indexOf("translateX(") !== -1) {
+            let translateXStart = newPosition.transform.indexOf("translateX(");
+            let translateXEnd = newPosition.transform.indexOf("px)", translateXStart);
+            if (translateXEnd !== -1) {
+                let currentValue = parseFloat(newPosition.transform.substring(translateXStart + 11, translateXEnd));
+                let newValue = currentValue + item.steps;
+                newPosition.transform = newPosition.transform.substring(0, translateXStart + 11) + newValue + "px)" + newPosition.transform.substring(translateXEnd + 3);
+            }
+        }
+        else newPosition.transform += `translateX(${item.steps}px)`;
         break;
       case "TURN_LEFT":
-        newPosition.transform = `rotate(${newPosition.transform ? newPosition.transform.split(" ")[0] - item.turnLeft : -item.turnLeft}deg)`;
+        if (newPosition.transform && newPosition.transform.indexOf("rotate(") !== -1) {
+          let rotateLeft = newPosition.transform.indexOf("rotate(");
+            let rotateEnd = newPosition.transform.indexOf("deg)", rotateLeft);
+            if (rotateEnd !== -1) {
+                let currentValue = parseFloat(newPosition.transform.substring(rotateLeft + 7, rotateEnd));
+                let newValue = currentValue - item.turnLeft;
+                newPosition.transform = newPosition.transform.substring(0, rotateLeft + 7) + newValue + "deg)" + newPosition.transform.substring(rotateEnd + 4);
+            }
+        }
+        else newPosition.transform += `rotate(${-item.turnLeft}deg)`;
         break;
       case "TURN_RIGHT":
-        newPosition.transform = `rotate(${newPosition.transform ? newPosition.transform.split(" ")[0] + item.turnRight : item.turnRight}deg)`;
+        let rotateRight = newPosition.transform.indexOf("rotate(");
+        if (rotateRight !== -1) {
+            let rotateEnd = newPosition.transform.indexOf("deg)", rotateRight);
+            if (rotateEnd !== -1) {
+                let currentValue = parseFloat(newPosition.transform.substring(rotateRight + 7, rotateEnd));
+                let newValue = currentValue + item.turnRight;
+                newPosition.transform = newPosition.transform.substring(0, rotateRight + 7) + newValue + "deg)" + newPosition.transform.substring(rotateEnd + 4);
+            }
+        }
+        else newPosition.transform += `rotate(${item.turnRight}deg)`;
         break;
-      // case "SAY_TEXT":
-      //   break;
-      // case "":
-      //   break;
-      // case "":
-      //   break;
     }
   });
-  console.log(newPosition);
+  console.log("New Position",newPosition);
   setSpritePosition([...spritePosition, newPosition]);
 };

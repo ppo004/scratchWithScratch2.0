@@ -13,17 +13,16 @@ export default function PreviewArea() {
     top: "10px",
     left: "10px",
   });
-
+  console.log("Within spritPos",spritePosition);
   useEffect(() => {
-    console.log("Witin",)
     getStyle(blocksState, spritePosition, setSpritePosition);
     spritePosition.map((item) =>
       setStyle((prev) => {
         return { ...prev, ...item };
       })
     );
+    console.log("Within useEffect, sprtePos",blocksState);
   }, [blocksState]);
-  console.log("witing",blocksState);
   return (
     <div className="flex-none h-[100%] w-full overflow-y-auto p-2 relative">
       <CatSprite style={style} />

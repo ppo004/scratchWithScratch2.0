@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import getComponent from "../BlockFactory/BlockFactory";
-import { DragDropContext } from "../../Context/DragDropContext";
+import { DragDropContext, } from "../../Context/DragDropContext";
 
 export default function MidArea() {
   const { blocksState, setBlocksState } = useContext(DragDropContext);
@@ -12,10 +12,12 @@ export default function MidArea() {
   };
 
   const handleDrop = (e) => {
-    console.log("Dropped");
+    
     const data = JSON.parse(e.dataTransfer.getData("text/plain"));
-    setState([...state, data]);
-    setBlocksState(state);
+    let stateData = [...state, data];
+    setState(stateData);
+    setBlocksState(stateData);
+    console.log("Dropped",data,blocksState,stateData);
   };
 
   return (
