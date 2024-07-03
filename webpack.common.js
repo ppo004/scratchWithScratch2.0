@@ -6,9 +6,9 @@ module.exports = {
     app: "./src/index.js",
   },
   output: {
-    filename: "bundle.[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: '/' // Important for GitHub Pages
+    // filename: "app.js",
+    
+    path: path.resolve(__dirname, "public"),
   },
   module: {
     rules: [
