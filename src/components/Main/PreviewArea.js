@@ -24,8 +24,10 @@ export default function PreviewArea() {
     console.log("Within useEffect, sprtePos",blocksState);
   }, [blocksState]);
   return (
-    <div className="flex-none h-[100%] w-full overflow-y-auto p-2 relative">
-      <CatSprite style={style} />
-    </div>
+    <div className="h-auto w-full overflow-y-auto p-2 relative flex items-center justify-center">
+  <CatSprite style={style} />
+</div>
+
+
   );
 }

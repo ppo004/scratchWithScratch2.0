@@ -20,7 +20,7 @@ export default function App() {
               <Sidebar />
               <MidArea />
             </div>
-            <div className="w-1/3 h-full overflow-hidden flex flex-row dark:bg-gray-700 dark:border-gray-600 rounded-tl-xl ml-2">
+            <div className="w-1/2 h-full overflow-hidden flex flex-row dark:bg-gray-700 dark:border-gray-600 rounded-tl-xl ml-2">
               <PreviewArea />
             </div>
           </div>

@@ -18,8 +18,7 @@ const TurnRight = ({ data }) => {
       }
       draggable
     >
-      {"Turn "}
-      <Icon name="redo" size={15} className="text-white mx-2" />
+      {"Turn Right"}
       <input
         type="text"
         className="w-[1.5rem] mx-2 rounded text-black text-center"

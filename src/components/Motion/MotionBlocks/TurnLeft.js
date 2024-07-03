@@ -18,8 +18,7 @@ const TurnLeft = ({ data }) => {
       }
       draggable
     >
-      {"Turn "}
-      <Icon name="undo" size={15} className="text-white mx-2" />
+      {"Turn Left"}
       <input
         type="text"
         className="w-[1.5rem] mx-2 rounded text-black text-center"
