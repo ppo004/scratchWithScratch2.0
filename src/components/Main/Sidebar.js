@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import Events from "./Events";
 import Motion from "../Motion/Motion";
 import Looks from "../Looks/Looks";
-import { DragDropContext } from "../../Context/DragDropContext";
 
 export default function Sidebar() {
   return (
