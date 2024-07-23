@@ -7,7 +7,7 @@ const Events = () => {
   const { blocksState, setBlocksState } = useContext(DragDropContext);
   const { spritePosition, setSpritePosition } = useContext(SpritePositionContext);
   const handleStartAnimation = () => {
-      console.log(blocksState);
+      
   }
   return (
     <>

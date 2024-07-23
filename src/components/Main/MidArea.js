@@ -17,7 +17,6 @@ export default function MidArea() {
     let stateData = [...state, data];
     setState(stateData);
     setBlocksState(stateData);
-    console.log("Dropped",data,blocksState,stateData);
   };
 
   return (
